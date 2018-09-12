@@ -16,11 +16,11 @@ function init() {
 }
 
 function enable() {
+    _origupdateButtons = EndSessionDialog.EndSessionDialog.prototype._updateButtons;
+
     let systemMenu = Main.panel.statusArea['aggregateMenu']._system;
     if (!systemMenu || !systemMenu._systemActions._canHaveSuspend)
         return;
-
-    _origupdateButtons = EndSessionDialog.EndSessionDialog.prototype._updateButtons;
 
     EndSessionDialog.EndSessionDialog.prototype._custSleep = function() {
         this.cancel();
